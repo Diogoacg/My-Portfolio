@@ -32,4 +32,4 @@ Provide your contact information, such as email address and links to your social
 
 ## Link
 
-[www.diogo](https://diogoacg.netlify.app/)https://diogoacg.netlify.app/
+https://diogoacg.netlify.app/
