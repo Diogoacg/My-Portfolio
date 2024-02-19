@@ -1,79 +1,31 @@
-![thumbnail](https://user-images.githubusercontent.com/16558205/180779213-ea740975-3df1-460a-a964-0a623ee25872.png)
+# Website Portfolio
 
-### Live - https://react-portfolio-template.netlify.app/
+This is a website portfolio showcasing my projects, skills, and experience.
 
-### Demo Video - https://www.youtube.com/watch?v=62_HLbx2zLQ&t=9s
+## Table of Contents
 
-### Tutorials
+- [About](#about)
+- [Projects](#projects)
+- [Skills](#skills)
+- [Experience](#experience)
+- [Contact](#contact)
 
-Youtube - https://www.youtube.com/watch?v=8cmJ2kR4SpM
+## About
 
-Blog - https://blog.chetanverma.com/how-to-build-a-portfolio-website-using-nextjs-and-tailwindcss
+In this section, provide a brief introduction about yourself and your background. Mention your passion for programming and any relevant information that sets you apart.
 
-### Features - 
+## Projects
 
-- Modern Stack (Next.js + TailwindCSS)
-- Minimal Design
-- Easy To Browse
-- Easy To Customize your details With GUI
-- Blog Crud (Create, Read, Update, Delete blog with easy to use UI).
-- Dark Mode
+List your notable projects here. Include a brief description, technologies used, and a link to each project's repository or live demo.
 
+## Skills
 
-### Sections
+Highlight your technical skills and expertise. Mention programming languages, frameworks, tools, and any other relevant skills.
 
-- Header
-- Work
-- Services
-- About
-- Contact
-- Markdown Blog
+## Experience
 
+If you have any professional experience or internships related to software development, mention them here. Include the company name, your role, and a brief description of your responsibilities.
 
-### How To Use
+## Contact
 
-- Clone this repo
-- run `yarn`
-- `yarn dev`
-
-
-### How To Deploy - 
-
-- There are many ways to Deploy this repo.
-- here we are gonna use netlify
-- Login into netlify with github
-- after login select the forked repo or the repo you want to deploy
-- after selecting netlify will automatially deploy your website.
-
-Quickes way to deploy this repo - 
-
-[![Deploy To Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/chetanverma16/react-portfolio-template)
-
-
-### How To Contribute - 
-
-I would be very happy to review your PRs and all the awesome things that you can improve on this portfolio.
-
-
-### Tech Stack Used - 
-- Next.js
-- TailwindCSS
-
-
-### Thanks
-
-If you liked this portfolio template, don't forget to give it a ⭐.
-
-## Awesome Contributors
-[@Aryan3212](https://github.com/Aryan3212) [@achu-krishna](https://github.com/achu-krishna)
-
-## Supporting
-Many hours of hard work have gone into this project. Your support will be very appreciated!
-
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/chetanverma)
-
-
-
-
-
-
+Provide your contact information, such as email address and links to your social media profiles. Encourage visitors to reach out to you for collaboration or inquiries.
