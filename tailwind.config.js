@@ -1,21 +1,23 @@
+/** @type {import('tailwindcss').Config} */
+const colors = require("tailwindcss/colors");
 module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: "class",
   theme: {
-    screens: {
-      mob: "375px",
-      tablet: "768px",
-      laptop: "1024px",
-      desktop: "1280px",
-      laptopl: "1440px",
-    },
     extend: {
-      colors: {
-        "gray-950": "#121212",
+      backgroundImage: {
+        "gradient-radial":
+          "radial-gradient(ellipse at center, var(--tw-gradient-stops))",
+        "gradient-conic": "conic-gradient(var(--tw-gradient-stops))",
       },
+    },
+    colors: {
+      ...colors,
+      primary: colors.cyan,
+      secondary: colors.blue,
     },
   },
   plugins: [],

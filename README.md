@@ -1,35 +1,33 @@
-# Website Portfolio
+# My Portfolio
 
-This is a website portfolio showcasing my projects, skills, and experience.
+Welcome to my portfolio website, crafted using Next.js and Tailwind CSS. This site is designed to showcase my skills, projects, and accomplishments in a sleek and responsive layout.
 
-## Table of Contents
+## Getting Started
 
-- [About](#about)
-- [Projects](#projects)
-- [Skills](#skills)
-- [Experience](#experience)
-- [Contact](#contact)
+To get started with my portfolio:
 
-## About
+Clone the repository: git clone <https://github.com/Diogoacg/My-Portfolio>
 
-In this section, provide a brief introduction about yourself and your background. Mention your passion for programming and any relevant information that sets you apart.
+Navigate to the project directory: cd My-Portfolio
 
-## Projects
+Install dependencies: npm install
 
-List your notable projects here. Include a brief description, technologies used, and a link to each project's repository or live demo.
+## Usage
 
-## Skills
+Start the development server: npm run dev
 
-Highlight your technical skills and expertise. Mention programming languages, frameworks, tools, and any other relevant skills.
+Open your browser and visit <http://localhost:3000> to explore the website.
 
-## Experience
+## Dependencies
 
-If you have any professional experience or internships related to software development, mention them here. Include the company name, your role, and a brief description of your responsibilities.
+This project relies on the following technologies:
 
-## Contact
+Next.js: A React framework for server-side rendering and static site generation.
 
-Provide your contact information, such as email address and links to your social media profiles. Encourage visitors to reach out to you for collaboration or inquiries.
+Tailwind CSS: A utility-first CSS framework for building custom designs quickly.
 
-## Link
+React: A JavaScript library for building user interfaces.
 
-https://diogoacg.netlify.app/
+React Icons: A library of popular icons for React projects.
+
+TypeScript: A typed superset of JavaScript that compiles to plain JavaScript.
