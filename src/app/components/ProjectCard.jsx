@@ -1,6 +1,5 @@
 import React from "react";
 import { CodeBracketIcon } from "@heroicons/react/24/outline";
-import Link from "next/link";
 
 const ProjectCard = ({ title, description, gitUrl }) => {
   return (
@@ -10,12 +9,15 @@ const ProjectCard = ({ title, description, gitUrl }) => {
         <p className="text-[#ADB7BE] overflow-hidden overflow-ellipsis">
           {description}
         </p>
-        <Link
+        {/* Utilizando <a> para abrir em nova aba */}
+        <a
           href={gitUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         >
           <CodeBracketIcon className="h-14 w-14 text-[#ADB7BE] hover:text-white" />
-        </Link>
+        </a>
       </div>
     </div>
   );

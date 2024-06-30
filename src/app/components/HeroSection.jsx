@@ -40,7 +40,7 @@ const HeroSection = () => {
             Per aspera ad astra.
           </p>
           <div>
-            <Link
+            <a
               href="/cv/CV.pdf"
               download="CV.pdf"
               className="px-1 inline-block py-1 sm:w-fit rounded-full bg-gradient-to-br from-primary-200 to-secondary-500 hover:bg-slate-800 text-white mt-3"
@@ -48,7 +48,7 @@ const HeroSection = () => {
               <div className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2">
                 Download CV
               </div>
-            </Link>
+            </a>
           </div>
         </motion.div>
         <motion.div
