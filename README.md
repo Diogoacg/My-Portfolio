@@ -2,6 +2,10 @@
 
 Welcome to my portfolio website, crafted using Next.js and Tailwind CSS. This site is designed to showcase my skills, projects, and accomplishments in a sleek and responsive layout.
 
+## Deployment
+
+The website is hosted on Netlify. You can visit it at https://diogoacg.netlify.app/.
+
 ## Getting Started
 
 To get started with my portfolio:
@@ -31,3 +35,6 @@ React: A JavaScript library for building user interfaces.
 React Icons: A library of popular icons for React projects.
 
 TypeScript: A typed superset of JavaScript that compiles to plain JavaScript.
+
+
+
