@@ -13,7 +13,7 @@ const Footer = () => {
         
         <div className="flex gap-4">
           <a 
-            href="https://github.com/your-username" 
+            href="https://github.com/diogoacg" 
             target="_blank" 
             rel="noopener noreferrer"
             className="p-2 rounded-full text-[rgb(var(--muted-foreground))] hover:text-[rgb(var(--foreground))] transition-colors"
@@ -24,7 +24,7 @@ const Footer = () => {
             </svg>
           </a>
           <a 
-            href="https://linkedin.com/in/your-username" 
+            href="https://www.linkedin.com/in/diogogoncalves22/" 
             target="_blank" 
             rel="noopener noreferrer"
             className="p-2 rounded-full text-[rgb(var(--muted-foreground))] hover:text-[rgb(var(--foreground))] transition-colors"
