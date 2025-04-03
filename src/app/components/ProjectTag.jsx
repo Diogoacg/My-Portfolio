@@ -1,23 +1,18 @@
 import React from "react";
 
-const ProjectTag = ({ name, onClick, isSelected }) => {
+const ProjectTag = ({ name, onClick, isSelected, icon }) => {
   const buttonStyles = isSelected
-    ? "text-white border-primary-500"
-    : "text-[#ADB7BE] border-slate-600 hover:border-white";
-
-  // Estilos para o botão
-  const buttonClasses =
-    "rounded-full border-2 px-4 md:px-6 py-2 md:py-3 text-lg md:text-xl cursor-pointer";
+    ? "bg-[rgba(var(--primary),0.1)] text-[rgb(var(--primary))] border-[rgb(var(--primary))]"
+    : "text-[rgb(var(--muted-foreground))] border-[rgb(var(--border))] hover:border-[rgb(var(--foreground))]";
 
   return (
-    <div className="m-2 flex items-center justify-center">
-      <button
-        className={`${buttonStyles} ${buttonClasses} md:min-w-[150px]`}
-        onClick={() => onClick(name)}
-      >
-        {name}
-      </button>
-    </div>
+    <button
+      className={`${buttonStyles} rounded-full border-2 px-4 py-2.5 flex items-center gap-2 transition-all`}
+      onClick={() => onClick(name)}
+    >
+      {icon && <span>{icon}</span>}
+      <span className="text-base font-medium whitespace-nowrap">{name}</span>
+    </button>
   );
 };
 

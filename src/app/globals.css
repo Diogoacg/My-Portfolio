@@ -3,25 +3,51 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  /* Modern color palette */
+  --primary: 124, 58, 237;   /* Purple */
+  --secondary: 79, 70, 229;  /* Indigo */
+  --dark: 17, 24, 39;        /* Dark gray */
+  --light: 249, 250, 251;    /* Light gray */
+  --accent: 16, 185, 129;    /* Teal */
+  
+  /* Light mode */
+  --background: 255, 255, 255;
+  --foreground: 17, 24, 39;
+  --card: 249, 250, 251;
+  --card-foreground: 17, 24, 39;
+  --muted: 243, 244, 246;
+  --muted-foreground: 107, 114, 128;
+  --border: 229, 231, 235;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+[data-theme="dark"] {
+  /* Dark mode */
+  --background: 17, 24, 39;
+  --foreground: 249, 250, 251;
+  --card: 31, 41, 55;
+  --card-foreground: 249, 250, 251;
+  --muted: 55, 65, 81;
+  --muted-foreground: 156, 163, 175;
+  --border: 55, 65, 81;
+}
+
+@layer base {
+  body {
+    color: rgb(var(--foreground));
+    background: rgb(var(--background));
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer components {
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600;
+  }
+
+  .card {
+    @apply bg-[rgb(var(--card))] text-[rgb(var(--card-foreground))] rounded-xl border border-[rgb(var(--border))] p-6 shadow-lg transition-all hover:shadow-xl;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-medium rounded-full transition-all hover:shadow-lg hover:scale-105 active:scale-95;
+  }
 }
