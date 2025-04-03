@@ -21,6 +21,8 @@ const navLinks = [
   },
 ];
 
+// ...existing code...
+
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -35,6 +37,28 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   
+  // Close mobile menu when clicking a link or when window resizes
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768 && navbarOpen) {
+        setNavbarOpen(false);
+      }
+    };
+    
+    // Handle body overflow to prevent scrolling when menu is open
+    if (navbarOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      document.body.style.overflow = 'auto';
+    };
+  }, [navbarOpen]);
+  
   // Theme toggler
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
@@ -48,13 +72,13 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed mx-auto top-0 left-0 right-0 z-10 transition-all duration-300 ${
-        scrolled 
+        scrolled || navbarOpen
           ? "bg-[rgba(var(--background),0.8)] backdrop-blur-md shadow-md" 
           : "bg-transparent"
       }`}
     >
       <div className="container flex items-center justify-between mx-auto px-6 py-4">
-        <Link href={"/"} className="text-2xl font-bold gradient-text">
+        <Link href={"/"} className="text-2xl font-bold gradient-text" onClick={() => setNavbarOpen(false)}>
           Diogo Gonçalves
         </Link>
         
@@ -90,6 +114,8 @@ const Navbar = () => {
           <button
             onClick={() => setNavbarOpen(!navbarOpen)}
             className="p-2 rounded-md bg-[rgba(var(--muted),0.5)] text-[rgb(var(--foreground))] hover:bg-[rgb(var(--muted))] transition-all"
+            aria-expanded={navbarOpen}
+            aria-label="Toggle navigation menu"
           >
             {navbarOpen ? (
               <XMarkIcon className="h-6 w-6" />
@@ -100,7 +126,18 @@ const Navbar = () => {
         </div>
       </div>
       
-      {navbarOpen && <MenuOverlay links={navLinks} />}
+      {/* Mobile menu with animation */}
+      <motion.div
+        initial={{ opacity: 0, height: 0 }}
+        animate={{ 
+          opacity: navbarOpen ? 1 : 0,
+          height: navbarOpen ? "auto" : 0
+        }}
+        transition={{ duration: 0.3 }}
+        className="md:hidden overflow-hidden"
+      >
+        {navbarOpen && <MenuOverlay links={navLinks} closeMenu={() => setNavbarOpen(false)} />}
+      </motion.div>
     </motion.nav>
   );
 };
