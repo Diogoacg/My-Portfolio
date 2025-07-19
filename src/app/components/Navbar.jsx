@@ -2,7 +2,12 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import NavLink from "./NavLink";
-import { Bars3Icon, XMarkIcon, SunIcon, MoonIcon } from "@heroicons/react/24/solid";
+import {
+  Bars3Icon,
+  XMarkIcon,
+  SunIcon,
+  MoonIcon,
+} from "@heroicons/react/24/solid";
 import MenuOverlay from "./MenuOverlay";
 import { motion } from "framer-motion";
 
@@ -21,13 +26,11 @@ const navLinks = [
   },
 ];
 
-// ...existing code...
-
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [theme, setTheme] = useState("dark");
-  
+  const [isDarkMode, setIsDarkMode] = useState(true); // Dark mode como padrão
+
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
@@ -36,7 +39,38 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  
+
+  // Handle theme persistence - Dark mode como padrão
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      setIsDarkMode(savedTheme === "dark");
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    } else {
+      // Default to dark mode - não seta nada, deixa o CSS padrão
+      setIsDarkMode(true);
+      // Remove qualquer atributo de tema para usar o padrão (dark)
+      document.documentElement.removeAttribute("data-theme");
+      localStorage.setItem("theme", "dark");
+    }
+  }, []);
+
+  // Toggle theme
+  const toggleTheme = () => {
+    const newTheme = isDarkMode ? "light" : "dark";
+    setIsDarkMode(!isDarkMode);
+
+    if (newTheme === "dark") {
+      // Remove o atributo para usar o CSS padrão (dark mode)
+      document.documentElement.removeAttribute("data-theme");
+    } else {
+      // Adiciona o atributo para light mode
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+
+    localStorage.setItem("theme", newTheme);
+  };
+
   // Close mobile menu when clicking a link or when window resizes
   useEffect(() => {
     const handleResize = () => {
@@ -44,99 +78,158 @@ const Navbar = () => {
         setNavbarOpen(false);
       }
     };
-    
+
     // Handle body overflow to prevent scrolling when menu is open
     if (navbarOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
-    
+
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     };
   }, [navbarOpen]);
-  
-  // Theme toggler
-  const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    document.documentElement.setAttribute("data-theme", newTheme);
+
+  // Dynamic navbar classes based on theme
+  const getNavbarClasses = () => {
+    const baseClasses =
+      "fixed mx-auto top-0 left-0 right-0 z-50 transition-all duration-300";
+
+    if (scrolled || navbarOpen) {
+      return isDarkMode
+        ? `${baseClasses} bg-slate-900/90 backdrop-blur-md border-b border-purple-500/20 shadow-lg shadow-purple-500/10`
+        : `${baseClasses} navbar-light bg-white/90 backdrop-blur-md border-b border-purple-500/20 shadow-lg shadow-purple-500/10`;
+    }
+
+    return `${baseClasses} bg-transparent`;
+  };
+
+  const getButtonClasses = () => {
+    return isDarkMode
+      ? "bg-gradient-to-r from-slate-800/50 to-purple-900/20 border border-purple-500/30 hover:border-purple-400/50"
+      : "bg-gradient-to-r from-white/80 to-purple-50/30 border border-purple-500/30 hover:border-purple-400/50 shadow-md";
   };
 
   return (
-    <motion.nav 
+    <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed mx-auto top-0 left-0 right-0 z-10 transition-all duration-300 ${
-        scrolled || navbarOpen
-          ? "bg-[rgba(var(--background),0.8)] backdrop-blur-md shadow-md" 
-          : "bg-transparent"
-      }`}
+      className={getNavbarClasses()}
     >
       <div className="container flex items-center justify-between mx-auto px-6 py-4">
-        <Link href={"/"} className="text-2xl font-bold gradient-text" onClick={() => setNavbarOpen(false)}>
-          Diogo Gonçalves
+        {/* Logo with futuristic styling */}
+        <Link href={"/"} onClick={() => setNavbarOpen(false)}>
+          <motion.div whileHover={{ scale: 1.05 }} className="relative">
+            <motion.h1 className="text-2xl font-black bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+              Diogo Gonçalves
+            </motion.h1>
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              className="absolute -inset-1 rounded border border-purple-400/20 opacity-0 hover:opacity-100 transition-opacity"
+            />
+          </motion.div>
         </Link>
-        
-        <div className="hidden md:flex items-center space-x-10">
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-8">
           {navLinks.map((link, index) => (
             <NavLink key={index} href={link.path} title={link.title} />
           ))}
-          
-          <button 
-            onClick={toggleTheme} 
-            aria-label="Toggle theme"
-            className="rounded-full p-2 bg-[rgba(var(--muted),0.5)] text-[rgb(var(--foreground))] hover:bg-[rgb(var(--muted))] transition-all"
+
+          {/* Theme Toggle Button */}
+          <motion.button
+            onClick={toggleTheme}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={`relative p-3 rounded-xl transition-all duration-300 backdrop-blur-sm ${getButtonClasses()}`}
+            aria-label={`Switch to ${isDarkMode ? "light" : "dark"} mode`}
           >
-            {theme === "dark" ? 
-              <SunIcon className="h-5 w-5" /> : 
-              <MoonIcon className="h-5 w-5" />
-            }
-          </button>
+            <motion.div
+              animate={{ rotate: isDarkMode ? 0 : 180 }}
+              transition={{ duration: 0.3 }}
+            >
+              {isDarkMode ? (
+                <SunIcon className="h-5 w-5 text-yellow-400" />
+              ) : (
+                <MoonIcon className="h-5 w-5 text-purple-600" />
+              )}
+            </motion.div>
+          </motion.button>
         </div>
-        
-        <div className="md:hidden flex items-center">
-          <button 
-            onClick={toggleTheme} 
-            aria-label="Toggle theme"
-            className="rounded-full p-2 mr-3 bg-[rgba(var(--muted),0.5)] text-[rgb(var(--foreground))] hover:bg-[rgb(var(--muted))] transition-all"
+
+        {/* Mobile Menu Button */}
+        <div className="md:hidden flex items-center space-x-2">
+          {/* Mobile Theme Toggle */}
+          <motion.button
+            onClick={toggleTheme}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={`relative p-2 rounded-lg transition-all duration-300 backdrop-blur-sm ${getButtonClasses()}`}
+            aria-label={`Switch to ${isDarkMode ? "light" : "dark"} mode`}
           >
-            {theme === "dark" ? 
-              <SunIcon className="h-5 w-5" /> : 
-              <MoonIcon className="h-5 w-5" />
-            }
-          </button>
-          
-          <button
+            <motion.div
+              animate={{ rotate: isDarkMode ? 0 : 180 }}
+              transition={{ duration: 0.3 }}
+            >
+              {isDarkMode ? (
+                <SunIcon className="h-4 w-4 text-yellow-400" />
+              ) : (
+                <MoonIcon className="h-4 w-4 text-purple-600" />
+              )}
+            </motion.div>
+          </motion.button>
+
+          {/* Mobile Menu Toggle */}
+          <motion.button
             onClick={() => setNavbarOpen(!navbarOpen)}
-            className="p-2 rounded-md bg-[rgba(var(--muted),0.5)] text-[rgb(var(--foreground))] hover:bg-[rgb(var(--muted))] transition-all"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={`relative p-3 rounded-xl transition-all duration-300 backdrop-blur-sm ${getButtonClasses()}`}
             aria-expanded={navbarOpen}
             aria-label="Toggle navigation menu"
           >
-            {navbarOpen ? (
-              <XMarkIcon className="h-6 w-6" />
-            ) : (
-              <Bars3Icon className="h-6 w-6" />
-            )}
-          </button>
+            <motion.div
+              animate={{ rotate: navbarOpen ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+              className="relative z-10"
+            >
+              {navbarOpen ? (
+                <XMarkIcon
+                  className={`h-6 w-6 ${isDarkMode ? "text-purple-400" : "text-purple-600"}`}
+                />
+              ) : (
+                <Bars3Icon
+                  className={`h-6 w-6 ${isDarkMode ? "text-purple-400" : "text-purple-600"}`}
+                />
+              )}
+            </motion.div>
+          </motion.button>
         </div>
       </div>
-      
-      {/* Mobile menu with animation */}
+
+      {/* Mobile menu with enhanced animation */}
       <motion.div
         initial={{ opacity: 0, height: 0 }}
-        animate={{ 
+        animate={{
           opacity: navbarOpen ? 1 : 0,
-          height: navbarOpen ? "auto" : 0
+          height: navbarOpen ? "auto" : 0,
         }}
-        transition={{ duration: 0.3 }}
-        className="md:hidden overflow-hidden"
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className={`md:hidden overflow-hidden backdrop-blur-md border-t border-purple-500/20 ${
+          isDarkMode ? "bg-slate-900/95" : "bg-white/95"
+        }`}
       >
-        {navbarOpen && <MenuOverlay links={navLinks} closeMenu={() => setNavbarOpen(false)} />}
+        {navbarOpen && (
+          <MenuOverlay
+            links={navLinks}
+            closeMenu={() => setNavbarOpen(false)}
+          />
+        )}
       </motion.div>
     </motion.nav>
   );
