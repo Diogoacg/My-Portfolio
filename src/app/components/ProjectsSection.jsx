@@ -173,14 +173,15 @@ const ProjectsSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
           <motion.h2
             className="projects-title"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
             <span className="block text-white">MY</span>
@@ -192,6 +193,7 @@ const ProjectsSection = () => {
           <motion.div
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
             className="flex items-center justify-center responsive-gap mb-8"
           >
@@ -215,6 +217,7 @@ const ProjectsSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ delay: 0.4 }}
           className="projects-tags"
         >
