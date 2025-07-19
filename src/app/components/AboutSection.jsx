@@ -14,9 +14,9 @@ const TAB_DATA = [
   {
     title: "Skills",
     id: "skills",
-    icon: <CodeBracketIcon className="h-6 w-6" />,
+    icon: <CodeBracketIcon className="icon-base" />,
     content: (
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+      <div className="skills-grid">
         {[
           "Java",
           "Rust",
@@ -41,16 +41,14 @@ const TAB_DATA = [
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: index * 0.1 }}
-            className="group flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 hover:border-purple-400/40 transition-all duration-300"
+            className="skill-item group"
           >
             <motion.div
               animate={{ rotate: [0, 360] }}
               transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
               className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-400 to-blue-400"
             />
-            <span className="text-gray-300 group-hover:text-white transition-colors font-medium">
-              {skill}
-            </span>
+            <span className="skill-text">{skill}</span>
           </motion.div>
         ))}
       </div>
@@ -59,7 +57,7 @@ const TAB_DATA = [
   {
     title: "Education",
     id: "education",
-    icon: <AcademicCapIcon className="h-6 w-6" />,
+    icon: <AcademicCapIcon className="icon-base" />,
     content: (
       <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -67,9 +65,9 @@ const TAB_DATA = [
         className="relative"
       >
         <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 to-blue-500 rounded-full" />
-        <div className="relative ml-8 p-6 rounded-2xl bg-gradient-to-br from-slate-800/50 to-purple-900/20 border border-purple-500/30 backdrop-blur-sm">
+        <div className="about-content-display relative ml-8">
           <div className="absolute -left-6 top-8 w-4 h-4 bg-purple-500 rounded-full border-4 border-slate-900" />
-          <h3 className="text-2xl font-bold text-white mb-2">
+          <h3 className="responsive-text-lg font-bold text-white mb-2">
             BSc in Software Engineering
           </h3>
           <p className="text-purple-300 font-medium mb-1">
@@ -83,7 +81,7 @@ const TAB_DATA = [
   {
     title: "Experience",
     id: "experience",
-    icon: <BriefcaseIcon className="h-6 w-6" />,
+    icon: <BriefcaseIcon className="icon-base" />,
     content: (
       <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -91,13 +89,13 @@ const TAB_DATA = [
         className="relative"
       >
         <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 to-blue-500 rounded-full" />
-        <div className="relative ml-8 p-6 rounded-2xl bg-gradient-to-br from-slate-800/50 to-purple-900/20 border border-purple-500/30 backdrop-blur-sm">
+        <div className="about-content-display relative ml-8">
           <div className="absolute -left-6 top-8 w-4 h-4 bg-blue-500 rounded-full border-4 border-slate-900" />
-          <h3 className="text-2xl font-bold text-white mb-2">
+          <h3 className="responsive-text-lg font-bold text-white mb-2">
             Part-Time Software Developer
           </h3>
           <p className="text-blue-300 font-medium mb-1">Cognitage, Braga</p>
-          <p className="text-gray-400 mb-3">2022 - Present</p>
+          <p className="text-gray-400 mb-3">December 2022 - July 2025</p>
           <p className="text-gray-300 leading-relaxed">
             Worked on AI, Blockchain and Full Homomorphic Encryption projects.
           </p>
@@ -122,10 +120,10 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className="relative py-24 overflow-hidden section-transparent"
+      className="about-container relative overflow-hidden section-transparent"
     >
-      <div className="relative z-10 container mx-auto px-6">
-        <div className="md:grid md:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 container mx-auto responsive-padding">
+        <div className="about-grid">
           {/* Image Section */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
@@ -135,7 +133,6 @@ const AboutSection = () => {
             className="relative flex justify-center mb-12 md:mb-0"
           >
             <div className="relative">
-              {/* Floating rings */}
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
@@ -147,15 +144,13 @@ const AboutSection = () => {
                 className="absolute -inset-12 rounded-3xl border border-blue-500/10"
               />
 
-              {/* Glowing background */}
               <motion.div
                 animate={{ opacity: [0.3, 0.6, 0.3] }}
                 transition={{ duration: 4, repeat: Infinity }}
                 className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-3xl blur-2xl"
               />
 
-              {/* Main image container */}
-              <div className="relative w-80 h-96 lg:w-96 lg:h-[28rem]">
+              <div className="about-image">
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-purple-600 via-blue-600 to-purple-600 p-1">
                   <div className="w-full h-full rounded-3xl overflow-hidden bg-gray-900">
                     <Image
@@ -168,11 +163,10 @@ const AboutSection = () => {
                   </div>
                 </div>
 
-                {/* Floating elements */}
                 <motion.div
                   animate={{ y: [-8, 8, -8], rotate: [0, 180, 360] }}
                   transition={{ duration: 6, repeat: Infinity }}
-                  className="absolute -top-4 -right-4 w-8 h-8 bg-purple-500 rounded-full opacity-60"
+                  className="about-image-floating absolute bg-purple-500 rounded-full opacity-60"
                 />
                 <motion.div
                   animate={{ y: [8, -8, 8], rotate: [360, 180, 0] }}
@@ -189,12 +183,11 @@ const AboutSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="about-content"
           >
-            {/* Title with unique styling */}
-            <div className="space-y-4">
+            <div className="responsive-space-y">
               <motion.h2
-                className="text-5xl lg:text-6xl font-black leading-tight"
+                className="about-title"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
@@ -206,7 +199,6 @@ const AboutSection = () => {
               </motion.h2>
             </div>
 
-            {/* Description with futuristic styling */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -214,7 +206,7 @@ const AboutSection = () => {
               className="relative"
             >
               <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-purple-500 to-blue-500 rounded-full" />
-              <p className="text-lg text-gray-300 leading-relaxed pl-6 max-w-lg">
+              <p className="about-text">
                 I am a Software Engineering student with a solid foundation in
                 mathematics. I am eager to learn and grow, and I am always ready
                 to take on challenging opportunities that will allow me to
@@ -226,12 +218,11 @@ const AboutSection = () => {
               </p>
             </motion.div>
 
-            {/* Futuristic Tab Navigation */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
-              className="flex gap-2 overflow-x-auto pb-2"
+              className="about-tabs"
             >
               {TAB_DATA.map((item) => (
                 <TabButton
@@ -245,13 +236,12 @@ const AboutSection = () => {
               ))}
             </motion.div>
 
-            {/* Content Display */}
             <motion.div
               key={tab}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="relative p-6 rounded-2xl bg-gradient-to-br from-slate-800/30 to-purple-900/10 border border-purple-500/20 backdrop-blur-sm"
+              className="about-content-display"
             >
               {activeTabData.content}
             </motion.div>

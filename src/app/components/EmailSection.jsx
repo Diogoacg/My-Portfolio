@@ -56,9 +56,9 @@ const EmailSection = () => {
   return (
     <section
       id="contact"
-      className="relative py-24 overflow-hidden section-transparent"
+      className="relative min-h-screen py-24 overflow-hidden section-transparent flex items-center"
     >
-      {/* Background effects mais sutis */}
+      {/* Background effects */}
       <div className="absolute inset-0 opacity-15">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(147,51,234,0.2)_0%,transparent_70%)]" />
       </div>
@@ -87,7 +87,7 @@ const EmailSection = () => {
         />
       ))}
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto responsive-padding relative z-10 w-full">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -100,21 +100,21 @@ const EmailSection = () => {
               Connect
             </span>
           </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-300 responsive-text-lg max-w-2xl mx-auto">
             I&apos;m always open to discussing new opportunities, creative
             projects, or just having a chat about technology.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="flex justify-center items-center min-h-[60vh]">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-8"
+            className="flex flex-col justify-center h-full responsive-space-y max-w-lg mx-auto"
           >
-            <div>
-              <h3 className="text-2xl font-bold text-white mb-6">
+            <div className="text-center mb-8">
+              <h3 className="responsive-text-lg font-bold text-white mb-6">
                 Get in touch
               </h3>
               <p className="text-gray-300 mb-8 leading-relaxed">
@@ -123,19 +123,19 @@ const EmailSection = () => {
               </p>
             </div>
 
-            <div className="space-y-6">
+            <div className="flex justify-center mb-12">
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 hover:border-purple-400/40 transition-all duration-300"
+                className="skill-item max-w-sm w-full"
               >
                 <div className="p-3 rounded-xl bg-gradient-to-r from-purple-600/20 to-blue-600/20">
-                  <EnvelopeIcon className="h-6 w-6 text-purple-400" />
+                  <EnvelopeIcon className="icon-base text-purple-400" />
                 </div>
                 <div>
-                  <p className="text-gray-400 text-sm">Email</p>
+                  <p className="text-gray-400 responsive-text-sm">Email</p>
                   <Link
                     href="mailto:diogoacostag@gmail.com"
-                    className="text-white font-medium hover:text-purple-400 transition-colors"
+                    className="text-white hover:text-purple-400 transition-colors email-text"
                   >
                     diogoacostag@gmail.com
                   </Link>
@@ -148,7 +148,7 @@ const EmailSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="flex gap-4"
+              className="flex justify-center responsive-gap"
             >
               {[
                 { href: "https://github.com/Diogoacg", icon: "github" },
@@ -171,7 +171,7 @@ const EmailSection = () => {
                     >
                       {social.icon === "github" && (
                         <svg
-                          className="h-6 w-6 text-gray-300 hover:text-white transition-colors"
+                          className="icon-base text-gray-300 hover:text-white transition-colors"
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
@@ -184,7 +184,7 @@ const EmailSection = () => {
                       )}
                       {social.icon === "linkedin" && (
                         <svg
-                          className="h-6 w-6 text-gray-300 hover:text-white transition-colors"
+                          className="icon-base text-gray-300 hover:text-white transition-colors"
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
@@ -193,11 +193,11 @@ const EmailSection = () => {
                       )}
                       {social.icon === "twitter" && (
                         <svg
-                          className="h-6 w-6 text-gray-300 hover:text-white transition-colors"
+                          className="icon-base text-gray-300 hover:text-white transition-colors"
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
-                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.80l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                         </svg>
                       )}
                     </motion.div>

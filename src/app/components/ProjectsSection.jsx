@@ -17,7 +17,7 @@ const projectsData = [
     description: "A single-player, platformer, speedrunning game",
     tag: ["All", "Individual"],
     gitUrl: "https://github.com/Diogoacg/GameDemo_VerseRunners",
-    icon: <CodeBracketIcon className="h-5 w-5" />,
+    icon: <CodeBracketIcon className="icon-sm" />,
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const projectsData = [
     description: "A Formula 1 data visualization project",
     tag: ["All", "Individual"],
     gitUrl: "https://github.com/Diogoacg/F1Data",
-    icon: <CodeBracketIcon className="h-5 w-5" />,
+    icon: <CodeBracketIcon className="icon-sm" />,
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const projectsData = [
     description: "University project for the IA course",
     tag: ["All", "University"],
     gitUrl: "https://github.com/Diogoacg/IA",
-    icon: <AcademicCapIcon className="h-5 w-5" />,
+    icon: <AcademicCapIcon className="icon-sm" />,
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const projectsData = [
       "University project for the POO (Object-oriented programming) course",
     tag: ["All", "University"],
     gitUrl: "https://github.com/Diogoacg/POO",
-    icon: <AcademicCapIcon className="h-5 w-5" />,
+    icon: <AcademicCapIcon className="icon-sm" />,
   },
   {
     id: 5,
@@ -50,7 +50,7 @@ const projectsData = [
     description: "University Operating Systems project",
     tag: ["All", "University"],
     gitUrl: "https://github.com/Diogoacg/SO",
-    icon: <AcademicCapIcon className="h-5 w-5" />,
+    icon: <AcademicCapIcon className="icon-sm" />,
   },
   {
     id: 6,
@@ -58,7 +58,7 @@ const projectsData = [
     description: "My personal portfolio website",
     tag: ["All", "Individual"],
     gitUrl: "https://github.com/Diogoacg/My-Portfolio",
-    icon: <CodeBracketIcon className="h-5 w-5" />,
+    icon: <CodeBracketIcon className="icon-sm" />,
   },
   {
     id: 7,
@@ -67,7 +67,7 @@ const projectsData = [
       "A coffee shop management app (React Native + Expo, still in progress)",
     tag: ["All", "Individual"],
     gitUrl: "https://github.com/Diogoacg/Willows",
-    icon: <CodeBracketIcon className="h-5 w-5" />,
+    icon: <CodeBracketIcon className="icon-sm" />,
   },
   {
     id: 8,
@@ -75,7 +75,7 @@ const projectsData = [
     description: "University project for the CG (Computer Graphics) course",
     tag: ["All", "University"],
     gitUrl: "https://github.com/Diogoacg/CG24-main",
-    icon: <AcademicCapIcon className="h-5 w-5" />,
+    icon: <AcademicCapIcon className="icon-sm" />,
   },
   {
     id: 9,
@@ -83,7 +83,7 @@ const projectsData = [
     description: "University project for the SD (Distributed Systems) course",
     tag: ["All", "University"],
     gitUrl: "https://github.com/Diogoacg/SD",
-    icon: <AcademicCapIcon className="h-5 w-5" />,
+    icon: <AcademicCapIcon className="icon-sm" />,
   },
   {
     id: 10,
@@ -92,7 +92,7 @@ const projectsData = [
       "A Formula 1 web application with AI and data visualization (Hackathon project)",
     tag: ["All", "Hackathons"],
     gitUrl: "https://github.com/Diogoacg/F1Hub-Hackathon-BugsByte",
-    icon: <LightBulbIcon className="h-5 w-5" />,
+    icon: <LightBulbIcon className="icon-sm" />,
   },
   {
     id: 11,
@@ -100,7 +100,7 @@ const projectsData = [
     description: "Food discovery and restaurant finder app (Hackathon project)",
     tag: ["All", "Hackathons"],
     gitUrl: "https://github.com/Diogoacg/bitefinder",
-    icon: <LightBulbIcon className="h-5 w-5" />,
+    icon: <LightBulbIcon className="icon-sm" />,
   },
   {
     id: 12,
@@ -108,7 +108,7 @@ const projectsData = [
     description: "Personal fitness tracking and gym management application",
     tag: ["All", "Individual"],
     gitUrl: "https://github.com/Diogoacg/MyGymApp",
-    icon: <CodeBracketIcon className="h-5 w-5" />,
+    icon: <CodeBracketIcon className="icon-sm" />,
   },
 ];
 
@@ -169,7 +169,7 @@ const ProjectsSection = () => {
         />
       ))}
 
-      <div className="relative z-10 container mx-auto px-6">
+      <div className="projects-container relative z-10 container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -177,9 +177,8 @@ const ProjectsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          {/* Title with futuristic styling */}
           <motion.h2
-            className="text-5xl lg:text-6xl font-black leading-tight mb-6"
+            className="projects-title"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -190,25 +189,24 @@ const ProjectsSection = () => {
             </span>
           </motion.h2>
 
-          {/* Decorative elements */}
           <motion.div
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
-            className="flex items-center justify-center gap-3 mb-8"
+            className="flex items-center justify-center responsive-gap mb-8"
           >
             <motion.div
               animate={{ rotate: [0, 90, 180, 270, 360] }}
               transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
             >
-              <CodeBracketIcon className="w-6 h-6 text-purple-400" />
+              <CodeBracketIcon className="icon-base text-purple-400" />
             </motion.div>
             <div className="h-[1px] w-16 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400"></div>
             <motion.div
               animate={{ rotate: [360, 270, 180, 90, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
             >
-              <CodeBracketIcon className="w-6 h-6 text-blue-400" />
+              <CodeBracketIcon className="icon-base text-blue-400" />
             </motion.div>
           </motion.div>
         </motion.div>
@@ -218,36 +216,36 @@ const ProjectsSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="flex flex-wrap justify-center items-center py-6 gap-4 mb-12"
+          className="projects-tags"
         >
           <ProjectTag
             onClick={handleTagChange}
             name="All"
-            icon={<CodeBracketIcon className="h-5 w-5" />}
+            icon={<CodeBracketIcon className="icon-sm" />}
             isSelected={tag === "All"}
           />
           <ProjectTag
             onClick={handleTagChange}
             name="University"
-            icon={<AcademicCapIcon className="h-5 w-5" />}
+            icon={<AcademicCapIcon className="icon-sm" />}
             isSelected={tag === "University"}
           />
           <ProjectTag
             onClick={handleTagChange}
             name="Individual"
-            icon={<BeakerIcon className="h-5 w-5" />}
+            icon={<BeakerIcon className="icon-sm" />}
             isSelected={tag === "Individual"}
           />
           <ProjectTag
             onClick={handleTagChange}
             name="Hackathons"
-            icon={<LightBulbIcon className="h-5 w-5" />}
+            icon={<LightBulbIcon className="icon-sm" />}
             isSelected={tag === "Hackathons"}
           />
         </motion.div>
 
         {/* Projects Grid */}
-        <ul ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <ul ref={ref} className="projects-grid">
           {filteredProjects.map((project, index) => (
             <motion.li
               key={project.id}

@@ -183,6 +183,110 @@
     z-index: 1;
   }
 
+  /* Responsividade para HeroSection - CORRIGIDA */
+  .hero-title {
+    @apply text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none;
+  }
+
+  .hero-subtitle {
+    @apply text-sm sm:text-base md:text-lg lg:text-xl font-bold text-gray-300;
+  }
+  .hero-container {
+    @apply px-4 sm:px-6 py-16 sm:py-20;
+  }
+
+  .hero-content {
+    @apply space-y-6 sm:space-y-8 lg:text-left text-center;
+  }
+
+  .hero-buttons {
+    @apply flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start;
+  }
+
+  .hero-button {
+    @apply px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base;
+  }
+
+  /* Responsividade para AboutSection */
+  .about-title {
+    @apply text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight;
+  }
+
+  .about-container {
+    @apply py-16 sm:py-20 lg:py-24 px-4 sm:px-6;
+  }
+
+  .about-grid {
+    @apply md:grid md:grid-cols-2 gap-8 lg:gap-16 items-start;
+  }
+
+  .about-image {
+    @apply w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[26rem] lg:w-96 lg:h-[28rem];
+  }
+
+  .about-image-floating {
+    @apply -top-3 -right-3 sm:-top-4 sm:-right-4 w-6 h-6 sm:w-8 sm:h-8;
+  }
+
+  .about-content {
+    @apply space-y-6 sm:space-y-8;
+  }
+
+  .about-text {
+    @apply text-base sm:text-lg text-gray-300 leading-relaxed sm:pl-6 max-w-lg;
+  }
+
+  .about-tabs {
+    @apply flex flex-col sm:flex-row gap-2 overflow-x-auto pb-2;
+  }
+
+  .about-content-display {
+    @apply p-4 sm:p-6 rounded-2xl bg-gradient-to-br from-slate-800/30 to-purple-900/10 border border-purple-500/20 backdrop-blur-sm;
+  }
+
+  /* Responsividade para ProjectsSection */
+  .projects-title {
+    @apply text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight mb-4 sm:mb-6;
+  }
+
+  .projects-container {
+    @apply px-4 sm:px-6 py-16 sm:py-20 lg:py-24;
+  }
+
+  .projects-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8;
+  }
+
+  .projects-tags {
+    @apply flex flex-wrap justify-center items-center py-4 sm:py-6 gap-2 sm:gap-4 mb-8 sm:mb-12;
+  }
+
+  /* Responsividade para ProjectTag */
+  .project-tag {
+    @apply px-3 py-2 sm:px-4 sm:py-2.5 lg:px-6 lg:py-3 rounded-xl sm:rounded-2xl border-2 flex items-center gap-2 sm:gap-3 font-semibold transition-all duration-300 text-sm sm:text-base;
+  }
+
+  .project-tag-selected {
+    @apply bg-gradient-to-r from-purple-600/30 to-blue-600/30 border-purple-400/60 text-white shadow-lg shadow-purple-500/25;
+  }
+
+  .project-tag-default {
+    @apply bg-gradient-to-r from-slate-800/30 to-purple-900/10 border-purple-500/20 text-gray-300 hover:border-purple-400/40 hover:text-white;
+  }
+
+  /* Skills grid responsivo */
+  .skills-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6;
+  }
+
+  .skill-item {
+    @apply flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 hover:border-purple-400/40 transition-all duration-300;
+  }
+
+  .skill-text {
+    @apply text-gray-300 group-hover:text-white transition-colors font-medium text-sm sm:text-base;
+  }
+
   /* Light mode - navbar específico */
   [data-theme="light"] .navbar-light {
     background: rgba(255, 255, 255, 0.9) !important;
@@ -224,5 +328,93 @@
       0 20px 25px -5px rgba(0, 0, 0, 0.1),
       0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
     background: rgb(255, 255, 255) !important;
+  }
+
+  .email-text {
+    @apply text-sm sm:text-sm md:text-base lg:text-xl font-medium;
+  }
+
+  /* Utility classes para tamanhos responsivos */
+  .responsive-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .responsive-margin {
+    @apply mx-4 sm:mx-6 lg:mx-8;
+  }
+
+  .responsive-text-sm {
+    @apply text-sm sm:text-base;
+  }
+
+  .responsive-text-base {
+    @apply text-base sm:text-lg;
+  }
+
+  .responsive-text-lg {
+    @apply text-lg sm:text-xl lg:text-2xl;
+  }
+
+  .responsive-gap {
+    @apply gap-4 sm:gap-6 lg:gap-8;
+  }
+
+  .responsive-space-y {
+    @apply space-y-4 sm:space-y-6 md:space-y-8  lg:space-y-10;
+  }
+
+  /* Mobile-first icon sizes */
+  .icon-sm {
+    @apply w-4 h-4 sm:w-5 sm:h-5;
+  }
+
+  .icon-base {
+    @apply w-5 h-5 sm:w-6 sm:h-6;
+  }
+
+  .icon-lg {
+    @apply w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8;
+  }
+
+  /* Container breakpoints customizados */
+  .container-responsive {
+    @apply w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-4xl mx-auto;
+  }
+
+  /* Flexbox responsivo */
+  .flex-responsive {
+    @apply flex flex-col sm:flex-row;
+  }
+
+  .flex-responsive-reverse {
+    @apply flex flex-col-reverse sm:flex-row;
+  }
+
+  /* Grid responsivo */
+  .grid-responsive-2 {
+    @apply grid grid-cols-1 sm:grid-cols-2;
+  }
+
+  .grid-responsive-3 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .grid-responsive-4 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+}
+
+/* Media queries específicas para casos especiais */
+@media (max-width: 640px) {
+  .mobile-hide {
+    display: none !important;
+  }
+
+  .mobile-full-width {
+    width: 100% !important;
+  }
+
+  .mobile-center {
+    text-align: center !important;
   }
 }
